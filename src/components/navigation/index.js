@@ -12,10 +12,11 @@ import {
   Drawer,
   Hidden,
   Button,
+  Link,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import SettingsIcon from "@mui/icons-material/Settings";
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import { useState } from "react";
 
 const Navigation = () => {
@@ -24,7 +25,12 @@ const Navigation = () => {
   const list = () => (
     <Box sx={{ width: 250 }} role="presentation">
       <List>
-        <Link to="settings">
+        <Link
+          component={RouterLink}
+          to="settings"
+          underline="none"
+          color="inherit"
+        >
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
@@ -55,7 +61,13 @@ const Navigation = () => {
             </IconButton>
           </Hidden>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <Link to="/">Movies recommendation</Link>
+            <Link
+              component={RouterLink}
+              to="/"
+              sx={{ color: "#fff", textDecoration: "none" }}
+            >
+              Movies recommendation
+            </Link>
           </Typography>
 
           <Box
@@ -63,11 +75,13 @@ const Navigation = () => {
               display: { xs: "none", lg: "flex" },
             }}
           >
-            <Link to="settings">
-              <Button sx={{ my: 2, color: "white", display: "block" }}>
-                Settings
-              </Button>
-            </Link>
+            <Button
+              component={RouterLink}
+              to="settings"
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              Settings
+            </Button>
           </Box>
         </Toolbar>
       </AppBar>
